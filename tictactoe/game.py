@@ -57,4 +57,10 @@ class TicTacToe:
             and self._board[2][2] == self._last_player
         ):
             return True
+        if (
+            self._board[0][2] == self._last_player
+            and self._board[1][1] == self._last_player
+            and self._board[2][0] == self._last_player
+        ):
+            return True
         return False
