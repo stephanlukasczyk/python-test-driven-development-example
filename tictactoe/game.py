@@ -9,11 +9,13 @@ class TicTacToe:
             ["\0", "\0", "\0"],
             ["\0", "\0", "\0"],
         ]
+        self._last_player = "\0"
 
     def play(self, x: int, y: int) -> None:
         self._check_axis(x)
         self._check_axis(y)
         self._set_box(x, y)
+        self._last_player = self.next_player
 
     @staticmethod
     def _check_axis(axis: int) -> None:
@@ -27,4 +29,6 @@ class TicTacToe:
 
     @property
     def next_player(self) -> str:
+        if self._last_player == "X":
+            return "O"
         return "X"
