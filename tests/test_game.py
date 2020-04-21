@@ -26,3 +26,8 @@ def test_when_occupied_then_runtime_error(tictactoe):
 
 def test_given_first_turn_when_next_player_then_x(tictactoe):
     assert tictactoe.next_player == "X"
+
+
+def test_given_last_turn_was_x_when_next_player_then_o(tictactoe):
+    tictactoe.play(1, 1)
+    assert tictactoe.next_player == "O"
