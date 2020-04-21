@@ -11,10 +11,16 @@ class TicTacToe:
         ]
 
     def play(self, x: int, y: int) -> None:
-        if x < 1 or x > 3:
-            raise RuntimeError("X is outside board")
-        if y < 1 or y > 3:
-            raise RuntimeError("Y is outside board")
+        self._check_axis(x)
+        self._check_axis(y)
+        self._set_box(x, y)
+
+    @staticmethod
+    def _check_axis(axis: int) -> None:
+        if axis < 1 or axis > 3:
+            raise RuntimeError("Tile outside board")
+
+    def _set_box(self, x: int, y: int) -> None:
         if self._board[x - 1][y - 1] != "\0":
             raise RuntimeError("Slot is occupied")
         self._board[x - 1][y - 1] = "X"
