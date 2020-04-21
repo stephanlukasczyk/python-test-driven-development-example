@@ -31,3 +31,8 @@ def test_given_first_turn_when_next_player_then_x(tictactoe):
 def test_given_last_turn_was_x_when_next_player_then_o(tictactoe):
     tictactoe.play(1, 1)
     assert tictactoe.next_player == "O"
+
+
+def test_when_play_then_no_winner(tictactoe):
+    actual = tictactoe.play(1, 1)
+    assert actual == "No winner"
