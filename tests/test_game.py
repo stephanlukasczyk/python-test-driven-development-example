@@ -22,3 +22,7 @@ def test_when_occupied_then_runtime_error(tictactoe):
     tictactoe.play(2, 1)
     with pytest.raises(RuntimeError):
         tictactoe.play(2, 1)
+
+
+def test_given_first_turn_when_next_player_then_x(tictactoe):
+    assert tictactoe.next_player == "X"
