@@ -64,3 +64,12 @@ def test_when_play_and_top_bottom_diagonal_line_then_winner(tictactoe):
     tictactoe.play(1, 3)  # O
     actual = tictactoe.play(3, 3)  # X
     assert actual == "X is the winner"
+
+
+def test_when_play_and_bottom_top_diagonal_line_then_winner(tictactoe):
+    tictactoe.play(1, 3)  # X
+    tictactoe.play(1, 1)  # O
+    tictactoe.play(2, 2)  # X
+    tictactoe.play(1, 2)  # O
+    actual = tictactoe.play(3, 1)  # X
+    assert actual == "X is the winner"
