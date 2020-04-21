@@ -36,3 +36,12 @@ def test_given_last_turn_was_x_when_next_player_then_o(tictactoe):
 def test_when_play_then_no_winner(tictactoe):
     actual = tictactoe.play(1, 1)
     assert actual == "No winner"
+
+
+def test_when_play_and_whole_horizontal_line_then_winner(tictactoe):
+    tictactoe.play(1, 1)  # X
+    tictactoe.play(1, 2)  # O
+    tictactoe.play(2, 1)  # X
+    tictactoe.play(2, 2)  # O
+    actual = tictactoe.play(3, 1)  # X
+    assert actual == "X is the winner"
