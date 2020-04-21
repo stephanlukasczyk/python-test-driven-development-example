@@ -14,8 +14,15 @@ class TicTacToe:
     def play(self, x: int, y: int) -> str:
         self._check_axis(x)
         self._check_axis(y)
-        self._set_box(x, y)
         self._last_player = self.next_player
+        self._set_box(x, y, self._last_player)
+        for i in range(3):
+            if (
+                self._board[0][i] == self._last_player
+                and self._board[1][i] == self._last_player
+                and self._board[2][i] == self._last_player
+            ):
+                return f"{self._last_player} is the winner"
         return "No winner"
 
     @staticmethod
@@ -23,10 +30,10 @@ class TicTacToe:
         if axis < 1 or axis > 3:
             raise RuntimeError("Tile outside board")
 
-    def _set_box(self, x: int, y: int) -> None:
+    def _set_box(self, x: int, y: int, last_player: str) -> None:
         if self._board[x - 1][y - 1] != "\0":
             raise RuntimeError("Slot is occupied")
-        self._board[x - 1][y - 1] = "X"
+        self._board[x - 1][y - 1] = last_player
 
     @property
     def next_player(self) -> str:
