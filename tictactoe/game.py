@@ -10,19 +10,15 @@ class TicTacToe:
             ["\0", "\0", "\0"],
         ]
         self._last_player = "\0"
+        self._size = 3
 
     def play(self, x: int, y: int) -> str:
         self._check_axis(x)
         self._check_axis(y)
         self._last_player = self.next_player
         self._set_box(x, y, self._last_player)
-        for i in range(3):
-            if (
-                self._board[0][i] == self._last_player
-                and self._board[1][i] == self._last_player
-                and self._board[2][i] == self._last_player
-            ):
-                return f"{self._last_player} is the winner"
+        if self._is_win():
+            return f"{self._last_player} is the winner"
         return "No winner"
 
     @staticmethod
@@ -40,3 +36,13 @@ class TicTacToe:
         if self._last_player == "X":
             return "O"
         return "X"
+
+    def _is_win(self) -> bool:
+        for i in range(self._size):
+            if (
+                self._board[0][i] == self._last_player
+                and self._board[1][i] == self._last_player
+                and self._board[2][i] == self._last_player
+            ):
+                return True
+        return False
