@@ -24,3 +24,7 @@ class TicTacToe:
         if self._board[x - 1][y - 1] != "\0":
             raise RuntimeError("Slot is occupied")
         self._board[x - 1][y - 1] = "X"
+
+    @property
+    def next_player(self) -> str:
+        return "X"
